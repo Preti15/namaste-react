@@ -1,0 +1,16 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is Namste react ",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "preti yadav",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.11.0"
+  },
+  "browswerslist":[
+    "last 2 versions",
+  ]
+}
