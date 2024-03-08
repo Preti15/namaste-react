@@ -3,14 +3,21 @@
   "version": "1.0.0",
   "description": "This is Namste react ",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "author": "preti yadav",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.11.0"
+    "parcel": "^2.11.0",
+    "process": "^0.11.10"
   },
-  "browswerslist":[
-    "last 2 versions",
-  ]
+  "browswerslist": [
+    "last 2 versions"
+  ],
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }
