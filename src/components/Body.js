@@ -5,6 +5,8 @@ import Shimmer from "./Shimmer";
 const Body = () => {
 
     const [resList, setResList] = useState([])
+    const [searchText, setSearchText] = useState('')
+    const [filteredResList, setFilteredResList] = useState([])
 
     useEffect(() => {
         fetchData()
@@ -17,15 +19,19 @@ const Body = () => {
 
         setResList(json?.data?.cards)
 
+        setFilteredResList(json?.data?.cards)
+
     }
 
-    if(resList.length === 0){
-       return <Shimmer />
-    }
-
-    return(
+    return resList.length === 0 ? <Shimmer /> : (
         <div className='body'>
             <div className='filter'>
+                <input type="search" name="Search" value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
+                <button onClick={() => {
+                   filteredRes = resList.filter(res => (res.card.card?.info?.name).toLowerCase().includes(searchText.toLowerCase()))
+                    setFilteredResList(filteredRes)
+                    
+                }}>Search</button>
                 <button className='filter-btn' onClick={
                     () => {
                         if(resList)
@@ -36,7 +42,7 @@ const Body = () => {
             </div>
             <div className='res-container'>
                 {
-                   resList.map(restaurant => <RestaurantCardContainer listOfRestaurants = {restaurant} />) 
+                   filteredResList.map(restaurant => <RestaurantCardContainer listOfRestaurants = {restaurant} />) 
                 }
                 
             </div>
