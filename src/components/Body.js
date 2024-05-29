@@ -1,6 +1,7 @@
 import RestaurantCardContainer from "./RestaurantCardContainer";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
 
@@ -16,12 +17,15 @@ const Body = () => {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.007707545177679&lng=77.73299854248762&collection=83649&tags=layout_CCS_Biryani&sortBy=&filters=&type=rcv2&offset=0&page_type=null")
 
         const json = await data.json();
+        console.log(json)
 
         setResList(json?.data?.cards)
 
         setFilteredResList(json?.data?.cards)
 
     }
+
+    console.log("id", filteredResList)
 
     return resList.length === 0 ? <Shimmer /> : (
         <div className='body'>
@@ -42,7 +46,9 @@ const Body = () => {
             </div>
             <div className='res-container'>
                 {
-                   filteredResList.map(restaurant => <RestaurantCardContainer listOfRestaurants = {restaurant} />) 
+                   filteredResList.map(restaurant => <Link to={"/restaurants/"+ restaurant?.card?.card?.info?.id } style={{textDecoration: 'none'}}>
+                    <RestaurantCardContainer listOfRestaurants = {restaurant} />
+                   </Link>) 
                 }
                 
             </div>

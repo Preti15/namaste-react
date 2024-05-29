@@ -63,3 +63,44 @@
     display: flex;
     margin: 20px;
 }
+
+.itemCard {
+    width: 400px;
+    height: 200px;
+}
+
+.itemPic {
+    display: flex;
+}
+
+/* .menuCard {
+
+} */
+
+.itemCard {
+    margin: 50px;
+    padding: 12px;
+    color: black;
+    border: 2px solid rgb(235, 235, 144);
+    max-width: 100%;
+    display: flex;
+}
+
+.itemDescription{
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.itemDescription:hover {
+    overflow: visible; 
+    white-space: normal;
+    width: auto;
+}
+
+.itemImage {
+    width:150px;
+    height: 200px;
+    align-items: end;
+}
