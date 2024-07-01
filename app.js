@@ -1,4 +1,4 @@
-import  React  from 'react';
+import  React, {Suspense, lazy, } from 'react';
 import  ReactDOM  from 'react-dom/client';
 import Header from './src/components/Header';
 import Body from './src/components/Body';
@@ -7,6 +7,17 @@ import About from './src/components/About';
 import Contact from './src/components/Contact';
 import Error from './src/components/Error';
 import ItemDetails from './src/components/ItemDetails';
+import OnlineStatus from './src/utils/useOnlineStatus';
+// import Grocery from './src/components/Grocery';
+
+//Chunking
+//Code Splitting
+//Dynamic Loading
+//Dynamic Import
+//Lazy Loading
+//On demand Loading
+
+const Grocery = lazy(() => import('./src/components/Grocery'));
 
 const AppLayout = () => {
     return(
@@ -37,6 +48,14 @@ const router = createBrowserRouter([
    {
     path : '/restaurants/:resID',
     element: <ItemDetails />
+   },
+   {
+    path : '/Online Status',
+    element: <OnlineStatus />
+   },
+   {
+    path : '/grocery',
+    element: <Suspense fallback={<h1>Loading.....</h1>}><Grocery /></Suspense>
    }
     ],
     errorElement: <Error />

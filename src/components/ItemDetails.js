@@ -1,28 +1,14 @@
 import { Link } from "react-router-dom"
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { ITEM_IMAGE } from "../utils/constants";
 import { useParams } from "react-router-dom";
-import { DETAIlED_ITEM_LIST } from "../utils/constants";
+import useResMenu from "../utils/useResMenu";
 
 const ItemDetails = () => {
 
-    const [resInfo, setResInfo] = useState(null)
     const {resID} = useParams()
-    console.log(resID)
 
-
-    useEffect( () => {fetchMenu()}, [])
-
-    const fetchMenu = async () => {
-        const menu = await fetch(DETAIlED_ITEM_LIST + resID)
-
-        const menuJson = await menu.json()
-
-        console.log(menuJson)
-
-        setResInfo(menuJson)
-    }
+    const resInfo  = useResMenu(resID);
 
     if(resInfo === null){
         return <Shimmer />
@@ -31,8 +17,6 @@ const ItemDetails = () => {
     const {name, avgRating, costForTwoMessage} = resInfo?.data?.cards[2]?.card?.card?.info
 
     const { itemCards } = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
-
-    console.log(itemCards)
 
     return(
         <div>
