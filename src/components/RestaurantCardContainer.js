@@ -9,10 +9,10 @@ const RestaurantCardContainer = (props) => {
         }
         const {name, cloudinaryImageId, cuisines, costForTwo, avgRating, sla} = info ?? {}
             return(
-                <div className='resCard'>
-                    <img className='food-image' alt='res-food' src={ RES_IMAGE + cloudinaryImageId} />
-                    <h3>{name}</h3>
-                    <h4>{cuisines.join(', ')}</h4>
+                <div className="border-2 border-black hover:bg-gray-400 rounded-lg h-[410px] w-[250px] m-4 p-4">
+                    <img className='rounded-lg bg-slate-300 h-40 w-52' alt='res-food' src={ RES_IMAGE + cloudinaryImageId} />
+                    <h3 className="font-bold py-4 text-lg">{name}</h3>
+                    <h4 className="truncate-hidden">{cuisines.join(', ')}</h4>
                     <h4>{avgRating}</h4>
                     <h4>{costForTwo}</h4>
                     <h4>{sla.deliveryTime} mins</h4>
